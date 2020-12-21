@@ -1,0 +1,38 @@
+<!DOCTYPE  HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Результаты</title>
+ </head>
+ <script type="text/javascript"> 
+  var framesParams= ["green"];
+  window.fparams = framesParams;
+
+
+  function funonclick() {
+    console.log("testM");
+  }
+  window.onclick= funonclick;
+
+  function funonloadmain() {
+    var frame = document.getElementsByTagName("frame")[0]; 
+frame.contentWindow. postMessage ("blue", '*');   
+//    var x = document.getElementsByTagName("frame")[0].contentWindow;
+//x = window.frames[0];
+console.log("test");
+//console.log(x.document.getElementsByTagName("body")[0].style.backgroundColor);
+//x.document.getElementsByTagName("body")[0].style.backgroundColor = "blue";
+//console.log(x.document.getElementsByTagName("body")[0].style.backgroundColor);
+// this would turn the 1st iframe in document blue. 
+  } 
+  
+	window.onload = funonloadmain;
+	</script>  
+
+   <frameset cols="50%,50%", rows="25%,25%,25%,25%">
+    <frame src="user2.html" name="1">
+    <frame src="user2.html" name="2">
+
+    </frameset>
+
+</html>

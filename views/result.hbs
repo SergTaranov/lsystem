@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Результаты</title>
+ </head>
+<script>
+  function funonloadmain() {
+var frames = document.getElementsByTagName("frame"); 
+for(var i = 0; i < frames.length; i++)
+frames[i].contentWindow. postMessage ("blue", '*');   
+console.log("test" + i);
+} 
+	window.onload = funonloadmain;
+</script>
+  
+
+  {{#if frames}}
+    <frameset cols="50%,50%", rows="25%,25%,25%,25%">
+    {{#each frames}}
+      <frame src="{{this.file}}" name="{{this.fio}}">
+    {{/each}}                    
+   </frameset>
+
+  {{else}}
+    <p>Задания еще не присланы</p>
+  {{/if}}
+
+ 
+</html>
