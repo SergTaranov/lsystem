@@ -1,1 +1,2 @@
 https://github.com/strongloop/loopback-next/tree/master/examples/todo-jwt
+https://proglib.io/p/git-for-half-an-hour

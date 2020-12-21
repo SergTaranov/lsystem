@@ -24,7 +24,7 @@ var filename1 = '/studContent/user1.html';
 var filename2 = '/studContent/user2.html';
 var username = 'tsi';
 var frames = [];
-for(var i = 0; i < 2; i++){
+for(var i = 0; i < 4; i++){
   frames.push({file: filename1, fio: username});
   frames.push({file: filename2, fio: username});
 }
