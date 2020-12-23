@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+  <head> </head>
+
+  <script type="text/javascript"> 
+	function funonload() {
+	var elem = document.getElementById("t");
+	elem.style.backgroundColor = 'yellow';
+	window.addEventListener ('message', function(event) { 
+		elem.style.backgroundColor = event.data;
+});	
+	} 
+	window.onload = funonload;
+
+	function funonclick() {
+		console.log("testF");
+	}
+  window.onclick= funonclick;	
+	</script>  
+  <body>
+    <div id="t" > click me xxx - 1</div>
+    
+    <script>
+
+    var elem = document.getElementById("t");
+      
+      t.onclick = function () {
+//		var p = top.framesParams;
+        if(this.style.backgroundColor)
+          this.style.backgroundColor = "";
+          
+        else 
+           this.style.backgroundColor = "red";
+      
+      }
+
+
+    </script>
+
+  </body>
+</html>
