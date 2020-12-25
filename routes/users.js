@@ -33,10 +33,11 @@ function savePersonToPublicFolder(person, callback) {
     {fio : 'user 2', home: 'yyy', courses : [{course :'js', group:'1'}]}];
 //  var settings = {groups : groups, users : users};
   
-  var courses = [{title : 'JavaScript', stitle : 'js', tasks : [{id : 1, title : 'Упражнение 1', description : 'Сложить 2 числа', args : [2,5]}]},
-                {title : 'JavaScript', stitle : 'js', tasks : [{id : 1, title : 'Упражнение 2', description : 'Умножить 2 числа', args : [2,5]}]}];  
+  var courses = [{title:'JavaScript', stitle:'js',tasks:[{id:1, title:'Упражнение 1', description:'Сложить 2 числа', args:[2,5]},
+  {id:2,title:'Упражнение 2',description:'Умножить 2 числа',args:[2,5]}]},
+  {title:'HTML',stitle:'html',tasks:[{id:1,title:'Вывод HTML',description:'Вывод базовой страницы',args:[]}]}];  
   
-  var settings = JSON.parse(fs.readFileSync('./public/settings.json',));
+  var settings = global.lmssettings;//  JSON.parse(fs.readFileSync('./public/settings.json'));
   settings.users.push(person);
   fs.writeFile('./public/settings.json', JSON.stringify(settings), callback);
 //  fs.writeFile('./public/courses.json', JSON.stringify(courses), callback);

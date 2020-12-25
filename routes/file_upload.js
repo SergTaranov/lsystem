@@ -13,14 +13,19 @@ var upload_path = "./public/studContent/";
 //upload_path = ".\\"; 
 
 /* GET home page. */
-router.post('/', function(req, res, next) {
+//router.post('/', function(req, res, next) {
+router.post('/course/:courseId/task/:taskId/group/:groupId', function(req, res, next) {
 //  res.send("Test");
 //  res.write("test");
 //  res.render('upload_file');
 ///
+var taskId= req.params.taskId;
+var courseId= req.params.courseId;
 
 var form = new formidable.IncomingForm();
 form.parse(req, function (err, fields, files) {
+    var username= fields.usercode;
+    upload_path += courseId + '/task'+ taskId + '/group1/'+ username + '/'; // ставить группу после авторизации
     // oldpath : temporary folder to which file is saved to
     var oldpath = files.filetoupload.path;
     var newpath = upload_path + files.filetoupload.name;
@@ -28,8 +33,10 @@ form.parse(req, function (err, fields, files) {
     fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
         // you may respond with another html page
-        res.write('File uploaded and moved!');
-        res.end();
+        var url = '/course/' + courseId + '/task/'+ taskId +'/group/1'; // TODO ставить группу после авторизации 
+        res.redirect('/result' + url);
+ //       res.write('File uploaded and moved!');
+ //       res.end();
     });
 });
 

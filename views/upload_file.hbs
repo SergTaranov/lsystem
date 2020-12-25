@@ -9,8 +9,10 @@
 </head>
 <body>
     <h1>Upload files to Node.js Server</h1>
- 
-    <form action="fileupload" method="post" enctype="multipart/form-data">
+       <a href="/result{{url}}">/result{{url}}</a>  
+       <p></p>
+    <form action="/fileupload{{url}}" method="post" enctype="multipart/form-data">
+        <input type="text" name="usercode" id="user_code">
         <input type="file" name="filetoupload">
         <input type="submit" value="Upload">
     </form>

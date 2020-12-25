@@ -17,11 +17,16 @@ data += '</html>';
 //////////
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/course/:courseId/task/:taskId/group/:groupId', function(req, res, next) {
+//router.get('/course', function(req, res, next) {
 //  res.render('result', { file: '/public/studContent/user2.html'});
 //res.send(data);
-var filename1 = '/studContent/user1.html';
-var filename2 = '/studContent/user2.html';
+var taskId= req.params.taskId;
+var courseId= req.params.courseId;
+var path= '/studContent/' + courseId + '/task'+ taskId + '/group1/'; // ставить группу после авторизации
+
+var filename1 = path + 'tsi/index.html';
+var filename2 = path + 'xxx/index.html';
 var username = 'tsi';
 var frames = [];
 for(var i = 0; i < 4; i++){

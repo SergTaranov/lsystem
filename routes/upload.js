@@ -13,10 +13,13 @@ var router = express.Router();
  
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/course/:courseId/task/:taskId', function(req, res, next) {
 //  res.send("Test");
 //  res.write("test");
-  res.render('upload_file', {layout: false});
+  var taskId= req.params.taskId;
+  var courseId= req.params.courseId;
+  var url = '/course/' + courseId + '/task/'+ taskId +'/group/1'; // TODO ставить группу после авторизации
+  res.render('upload_file', {url:url});
   
 //  res.write(upload_html);
 });
