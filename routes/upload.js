@@ -13,10 +13,13 @@ var router = express.Router();
  
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/course/:courseId/task/:taskId', function(req, res, next) {
 //  res.send("Test");
 //  res.write("test");
-  res.render('upload_file', {layout: false});
+  var v1= req.params.taskId;
+  var v2= req.params.courseId;
+  var url = String('/studContent/' + v2 + '/group1/task'+ v1 + '/tsi/index.html');
+  res.render('upload_file', {url:url});
   
 //  res.write(upload_html);
 });
