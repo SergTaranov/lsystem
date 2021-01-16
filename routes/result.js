@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var fs = require('fs');
 //////////
 var data= '<!DOCTYPE  HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"\>\n'+
 '<html>\n'+
@@ -21,17 +21,21 @@ router.get('/course/:courseId/task/:taskId/group/:groupId', function(req, res, n
 //router.get('/course', function(req, res, next) {
 //  res.render('result', { file: '/public/studContent/user2.html'});
 //res.send(data);
-var taskId= req.params.taskId;
 var courseId= req.params.courseId;
-var path= '/studContent/' + courseId + '/task'+ taskId + '/group1/'; // ставить группу после авторизации
+var taskId= req.params.taskId;
+var groupId= req.params.groupId;
+var path= `/studContent/${courseId}/task${taskId}/group${groupId}/`; // ставить группу после авторизации
 
 var filename1 = path + 'tsi/index.html';
 var filename2 = path + 'xxx/index.html';
+var folders = fs.readdirSync(`./public/${path}`, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name);
 var username = 'tsi';
 var frames = [];
-for(var i = 0; i < 4; i++){
-  frames.push({file: filename1, fio: username});
-  frames.push({file: filename2, fio: username});
+for(var i = 0; i < folders.length; i++){
+  frames.push({file: `${path + folders[i]}/index.html`, fio: folders[i]});
+ // frames.push({file: filename2, fio: username});
 }
 //frames = [];
 res.render('result', {frames: frames, layout: false});

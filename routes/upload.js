@@ -18,7 +18,7 @@ router.get('/course/:courseId/task/:taskId', function(req, res, next) {
 //  res.write("test");
   var taskId= req.params.taskId;
   var courseId= req.params.courseId;
-  var url = '/course/' + courseId + '/task/'+ taskId +'/group/1'; // TODO ставить группу после авторизации
+  var url = `/course/${courseId}/task/${taskId}/group/1`; // TODO ставить группу после авторизации
   res.render('upload_file', {url:url});
   
 //  res.write(upload_html);

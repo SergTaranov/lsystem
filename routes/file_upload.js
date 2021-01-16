@@ -26,6 +26,9 @@ var form = new formidable.IncomingForm();
 form.parse(req, function (err, fields, files) {
     var username= fields.usercode;
     upload_path += courseId + '/task'+ taskId + '/group1/'+ username + '/'; // ставить группу после авторизации
+/*    fs.mkdir(upload_path, err => { 
+        if (err && err.code != 'EEXIST') throw err});*/ //TODO сделать асинхронную версию, сейчас выдает ошибку
+        fs.existsSync(upload_path) || fs.mkdirSync(upload_path);    
     // oldpath : temporary folder to which file is saved to
     var oldpath = files.filetoupload.path;
     var newpath = upload_path + files.filetoupload.name;
@@ -33,7 +36,7 @@ form.parse(req, function (err, fields, files) {
     fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
         // you may respond with another html page
-        var url = '/course/' + courseId + '/task/'+ taskId +'/group/1'; // TODO ставить группу после авторизации 
+        var url = `/course/${courseId}/task/${taskId}/group/1`; // TODO ставить группу после авторизации 
         res.redirect('/result' + url);
  //       res.write('File uploaded and moved!');
  //       res.end();
