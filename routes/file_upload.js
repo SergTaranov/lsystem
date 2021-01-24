@@ -9,16 +9,16 @@ var formidable = require('formidable');
 //var upload_html = fs.readFileSync("/manager/upload_file.html");
  
 // replace this with the location to save uploaded files
-var upload_path = "./public/studContent/";
 //upload_path = ".\\"; 
 
 /* GET home page. */
 //router.post('/', function(req, res, next) {
-router.post('/course/:courseId/task/:taskId/group/:groupId', function(req, res, next) {
-//  res.send("Test");
-//  res.write("test");
-//  res.render('upload_file');
-///
+    router.post('/course/:courseId/task/:taskId/group/:groupId', function(req, res, next) {
+        //  res.send("Test");
+        //  res.write("test");
+        //  res.render('upload_file');
+        ///
+var upload_path = "./public/studContent/";
 var taskId= req.params.taskId;
 var courseId= req.params.courseId;
 
